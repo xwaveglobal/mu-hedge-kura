@@ -1,5 +1,5 @@
 /* =====================================================================
-   26_stations_code.js — HedgeKura kitchen stations drawn in true iso geometry (same style as the PICK UP counter
+   26_stations_code.js — hedgekura kitchen stations drawn in true iso geometry (same style as the PICK UP counter
    and the storage rack): wooden base with a cream top, a steel back unit against the wall, posts + striped awning,
    and a sign board carrying the station's icon. Every station sits flush on its footprint and against its wall.
    wall 'L' = left wall (x=0), front faces +x.   wall 'B' = back wall (y=0), front faces +y.

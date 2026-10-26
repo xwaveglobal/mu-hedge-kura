@@ -2,7 +2,7 @@
    00_config.js — every tunable number lives here (data-driven design)
    ===================================================================== */
 const VERSION='1.6.4';
-const SAVE_KEY='hedgekura.v3', LEGACY_SAVE_KEY='hedgekura.v0'; /* HedgeKura save format */
+const SAVE_KEY='hedgekura.v3', LEGACY_SAVE_KEY='hedgekura.v0'; /* hedgekura save format */
 const REF=144;          // sprite resolution: px per tile width for object sprites
 const REF_C=128;        // sprite resolution for character sheets
 
@@ -20,9 +20,9 @@ const CFG={
   boost:{dur:60, cd:120},   // kept for old saves; the ad scenario uses CFG.ads.rush
   xp:{base:6, perLevel:6},
   decorBonus:0.05,          // +5% to every sale per decoration bought
-  stageNames:['Chicken Corner','HedgeKura Diner','Bigger Restaurant','Patio & Grand Opening'],
+  stageNames:['Chicken Corner','hedgekura Diner','Bigger Restaurant','Patio & Grand Opening'],
   minis:{clientKey:''},
-  /* Ad scenario v4.6 — HedgeKura placements (labels match the HedgeKura config). Times in seconds.
+  /* Ad scenario v4.6 — hedgekura placements (labels match the hedgekura config). Times in seconds.
      Ads are shown through Ads.adapter (HS SDK goes there); without it a test ad is simulated. */
   ads:{
     doubleTask:{min:20, max:150, show:10, cd:45},  // x2 Task Bonus: after a task pays coins -> the same reward again (max 150)
@@ -31,7 +31,7 @@ const CFG={
     vipTip:{show:10, cd:60},                       // VIP tip x2: after a VIP pays -> that VIP's bill again
     coinPurchase:{reward:100, cd:120},             // Coin Purchase: not enough coins for an upgrade / Shop / coin "+" -> +100
     grandOpening:{reward:200, show:15},            // Grand Opening: after each new stage opens and after the grand opening -> +200
-    inter:{every:45, afterTask:'t_take', afterReward:30}, // Grill Break (HedgeKura: earlier first ad, 45 s spacing): every 45 s of play, at a safe moment, >= 30 s after a rewarded ad
+    inter:{every:45, afterTask:'t_take', afterReward:30}, // Grill Break (hedgekura: earlier first ad, 45 s spacing): every 45 s of play, at a safe moment, >= 30 s after a rewarded ad
   },
   /* Engagement gifts — fixed amount per claim */
   gifts:{revisit:100, share:50, home:100, showAfter:'t_upgrade'},
@@ -82,7 +82,7 @@ const UPG={
     {key:'rFlow', label:'CUSTOMERS',icon:'flow', max:5,cost:[100,180,300,460,700], desc:'Customers arrive faster'}]},
 };
 
-/* Map zones (HedgeKura). Back walls run along y=0 and x=0.
+/* Map zones (hedgekura). Back walls run along y=0 and x=0.
    kitchen = one block behind the PICK UP counter (left), hall = queue + dining right next to the queue,
    expansion: kitchen annex below the kitchen, dining hall below the hall, patio below that. Customers enter from the right. */
 const ZONES=[
@@ -111,7 +111,7 @@ const SPOTS=[
  {id:'bin',     label:'Trash bin',     cost:5,   fp:[12.95,6.5,0.6,0.6],unlock:'t_bin',     kind:'bin'},
  {id:'table2',  label:'Table',         cost:60,  fp:[14.95,1.25,1.3,1.3],unlock:'t_table2',   kind:'table'},
  {id:'drink',   label:'Soda fountain', cost:90,  fp:[2.3,0,1.5,1.25],  unlock:'t_drink',    kind:'station', st:'drink', pt:[3.05,1.8]},
- {id:'renovate',label:'HedgeKura Diner', cost:300, fp:[13.6,9.9,1.1,0.8],unlock:'t_renovate', kind:'stage', stage:1},
+ {id:'renovate',label:'hedgekura Diner', cost:300, fp:[13.6,9.9,1.1,0.8],unlock:'t_renovate', kind:'stage', stage:1},
  {id:'pantry',  label:'Storage shelf', cost:150, fp:[0,3.75,0.6,1.1],  unlock:'t_pantry',kind:'station', st:'pantry', pt:[1.1,4.3]},
  {id:'prep',    label:'Burger station',cost:180, fp:[0,5.4,1.3,2.0],  unlock:'t_prep',    kind:'station', st:'prep', pt:[1.85,6.4]},
  {id:'office',  label:'Manager desk',  cost:600, fp:[17.35,12.9,0.8,0.65],unlock:'t_office',  kind:'office', zone:'hall2'},
@@ -160,7 +160,7 @@ const TASKS=[
  {id:'t_cook10',  text:'Fry 10 chicken buckets',kind:'count',stat:'cooked_pizza',n:10,reward:40},
  {id:'t_hire1',   text:'Hire a cashier hedgehog',kind:'buy',spot:'cashier',reward:60},
  {id:'t_collect100',text:'Collect 100 coins',kind:'count',stat:'collected',n:100,reward:40},
- {id:'t_renovate',text:'Renovate into HedgeKura Diner',kind:'buy',spot:'renovate',reward:50},
+ {id:'t_renovate',text:'Renovate into hedgekura Diner',kind:'buy',spot:'renovate',reward:50},
  {id:'t_pantry',  text:'Build the storage shelf',kind:'buy',spot:'pantry',reward:40},
  {id:'t_prep',    text:'New recipe: Cheeseburger',kind:'buy',spot:'prep',reward:50},
  {id:'t_loadprep',text:'Bring patties to the burger station',kind:'count',stat:'loaded',n:3,reward:30,target:'pantry'},

@@ -1,6 +1,6 @@
 /* =====================================================================
    20_rig.js — CHUBBY hedgehog rig (reference: "Chubby Style · Minimal Animation")
-   HedgeKura: the rig draws a hedgehog — brown quill disc, cream face, NO cat ears,
+   hedgekura: the rig draws a hedgehog — brown quill disc, cream face, NO cat ears,
    NO whiskers, NO cat tail (only a tiny hedgehog tail nub). Animations (walk/cwalk/
    serve/cook/...) move only legs/arms/tray exactly as before.
 

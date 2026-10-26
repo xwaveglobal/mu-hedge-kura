@@ -57,7 +57,7 @@ function drawStaff(e,name,anim){
 /* ---- customers / VIP / cleaner / manager: approved art (8-direction idle; drawn walk cycles where the sheet has them,
         otherwise the body stays still and only the leg strip steps) ---- */
 const SHEET_H={chef:1.06,cashier:1.0,waiter:1.0,cleaner:1.0,cust01:.95,cust02:.95,cust03:.95,cust04:.95,vip01:1.0,vip02:1.0,manager:1.0};
-/* HedgeKura sheets: the player has a full 8-direction walk + tray-carry set; the other roles have one drawn walk
+/* hedgekura sheets: the player has a full 8-direction walk + tray-carry set; the other roles have one drawn walk
    (screen-right, mirrored for screen-left) and step their legs on the 8-direction idle art for the other directions.
    A few side-profile idles lost face fill when cut, so those directions reuse the clean neighbour view. */
 const SIDE_WALK={walk:{90:[270,1]}};
@@ -323,7 +323,7 @@ function drawPlanter(x,y,w,d){ const H=.42; box(MD,x,y,0,w,d,H,'#7a4a2a','#b56f3
   for(let i=0;i<n;i++){ const f=(i+.5)/n, cx=along?x+w*f:x+w/2, cy=along?y+d/2:y+d*f, [sx,sy]=P(cx,cy,H), R=TW*.2;
     for(const [ox,oy,r,c] of [[0,-R*.55,R,'#3f8f2c'],[-R*.45,-R*.3,R*.7,'#3f8f2c'],[R*.45,-R*.3,R*.7,'#3f8f2c']]){ ctx.beginPath(); ctx.arc(sx+ox,sy+oy,r,0,7); ctx.fillStyle=c; ctx.fill(); ctx.lineWidth=MD.OL*.8; ctx.strokeStyle='#245a1a'; ctx.stroke(); }
     ctx.beginPath(); ctx.arc(sx-R*.15,sy-R*.7,R*.6,0,7); ctx.fillStyle='#5db53a'; ctx.fill(); ctx.beginPath(); ctx.arc(sx-R*.3,sy-R*.85,R*.28,0,7); ctx.fillStyle='#86d14f'; ctx.fill(); } }
-/* HedgeKura v2 station: front-facing v2 illustration standing on the station footprint.
+/* hedgekura v2 station: front-facing v2 illustration standing on the station footprint.
    Width = iso footprint diamond width, bottom-centre at the footprint's near corner.
    Returns false if the v2 image is not loaded, so the caller falls back to the code painter.
    Stock items / progress ring are still drawn by drawStation after this, on top of the image. */
@@ -364,7 +364,7 @@ function drawCounterSeg(y0,len,first,last){ const c=COUNTER, H=CTRC.h, x0=c.x, x
       const u0=y1-s1, u1=y1-s0; g.fillStyle=CTRC.sign; g.strokeStyle=INK; g.lineWidth=.035; rr(g,u0,.04,u1-u0,.44,.06); g.fill(); g.stroke();
       g.fillStyle='#fff6ea'; g.font='700 30px Fredoka, sans-serif'; g.textAlign='center'; g.textBaseline='middle';
       g.save(); g.translate((u0+u1)/2+.12,.27); g.scale(.0105,.0105); g.fillText('PICK UP',0,0);
-      /* HedgeKura mark on the PICK UP sign: spiky brown disc + cream face (was a cat face) */
+      /* hedgekura mark on the PICK UP sign: spiky brown disc + cream face (was a cat face) */
       g.fillStyle='#8a5a2c'; for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5; g.beginPath(); g.moveTo(-82+Math.cos(a-.3)*12,-2+Math.sin(a-.3)*12); g.lineTo(-82+Math.cos(a)*19,-2+Math.sin(a)*19); g.lineTo(-82+Math.cos(a+.3)*12,-2+Math.sin(a+.3)*12); g.closePath(); g.fill();}
       g.fillStyle='#fff4e3'; g.beginPath(); g.arc(-82,-2,11,0,7); g.fill();
       g.fillStyle='#5a3424'; g.beginPath(); g.arc(-86,-4,1.8,0,7); g.arc(-78,-4,1.8,0,7); g.arc(-82,1,1.4,0,7); g.fill(); g.restore();

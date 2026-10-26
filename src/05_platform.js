@@ -68,7 +68,7 @@ const PF=(()=>{
        each returns a Promise<{ok:boolean, reward?:boolean, err?:string}> */
     canShortcut(){ return sdk()?has('addShortcut'):true; },
     addHome(){ const T=sdk();
-      if(!T) return mockStep('Add to Home Screen','The phone asks “Add HedgeKura to Home Screen?”',true);
+      if(!T) return mockStep('Add to Home Screen','The phone asks “Add hedgekura to Home Screen?”',true);
       return new Promise(res=>{ try{ T.addShortcut({success:()=>res({ok:true}),fail:e=>res({ok:false,err:(e&&(e.error_msg||e.errMsg))||'cancelled'})}); }catch(e){res({ok:false,err:e.message})} }); },
     shortcutReward(){ const T=sdk(); if(!T) return Promise.resolve(true);
       if(!has('getShortcutMissionReward')) return Promise.resolve(false);
@@ -84,7 +84,7 @@ const PF=(()=>{
       return new Promise(res=>{ try{ fn.call(T,{success:r=>res(!!(r&&r.canReceiveReward)),fail:()=>res(false)}); }catch(_){res(false)} }); },
     share(){ const T=sdk();
       if(T&&T.shareAppMessage) return new Promise(res=>{ try{ T.shareAppMessage({query:'from=share',success:()=>res({ok:true}),fail:e=>res({ok:false,err:(e&&e.errMsg)||'cancelled'})}); }catch(e){res({ok:false,err:e.message})} });
-      return mockStep('Share HedgeKura','In TikTok this opens the friend picker. Pick “Sent” to simulate a share.',true,'Sent','Cancel'); },
+      return mockStep('Share hedgekura','In TikTok this opens the friend picker. Pick “Sent” to simulate a share.',true,'Sent','Cancel'); },
   };
   /* mock confirmation sheet so the flows can be tested outside TikTok */
   function mockStep(title,body,okDefault,okTxt='Done',noTxt='Cancel'){
@@ -101,7 +101,7 @@ const dayKey=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart
 
 /* =====================================================================
    Ads — one manager for every placement. Placement keys used in code -> label
-   (labels match the HedgeKura ads config):
+   (labels match the hedgekura ads config):
    ===================================================================== */
 const AD_PLACEMENTS={
   double_task:  {label:'Double Task Bonus', type:'rewarded'},   // x2 bonus when a task is completed

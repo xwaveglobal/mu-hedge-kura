@@ -42,7 +42,7 @@ function leaves(D,cx,cy,r,c1=COL.leaf,c2=COL.greenDk,n=7){
     g.fillStyle=i%2?c1:COL.leafLt;g.fill();g.strokeStyle=INK;g.lineWidth=D.OL*.8;g.stroke();
     line(D,[[cx,cy],[cx+(tx-cx)*.7,cy+(ty-cy)*.7]],c2,D.OL*.5);}
 }
-/* HedgeKura: formerly pawPrint — now draws a small hedgehog face mark (spiky
+/* hedgekura: formerly pawPrint — now draws a small hedgehog face mark (spiky
    brown disc + cream face). The old colour argument `c` is kept only so existing
    call sites (counter base, bin, office rug, queue slots, rig apron logo) keep
    working; the mark's own brown/cream colours are fixed. No paw, no cat. */

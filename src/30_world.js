@@ -11,7 +11,7 @@ function elevAt(x,y){const z=zoneAt(x,y);if(!z) return 0;if(z.elev) return z.ele
 function walkable(x,y,r){return !!(zoneAt(x-r,y-r)&&zoneAt(x+r,y-r)&&zoneAt(x-r,y+r)&&zoneAt(x+r,y+r))}
 function inLane(x,y){return x>=LANE.x0&&x<=LANE.x1&&y>=LANE.y0&&y<=LANE.y1}
 
-/* ---------------- floor + wall cache (HedgeKura P1 look) ---------------- */
+/* ---------------- floor + wall cache (hedgekura P1 look) ---------------- */
 const floorCv=document.createElement('canvas'); let floorInfo={ox:0,oy:0,dpr:1};
 const WALL_H=3.0, CACHE_B={x0:-7,x1:27,y0:-7,y1:28};
 const ENVC={grass:'#8cc552',grassDk:'#79b444',tileA:'#f8dcb2',tileB:'#f3d2a3',grout:'#e9c18f',
@@ -95,13 +95,13 @@ function drawWalls(D,stage){const P=D.P,g=D.g,H=WALL_H,t=.3,T=D.T;
     g2.fillStyle='#8a5a2c';for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5;g2.beginPath();g2.moveTo(.45+Math.cos(a-.3)*.15,.55+Math.sin(a-.3)*.13);g2.lineTo(.45+Math.cos(a)*.24,.55+Math.sin(a)*.21);g2.lineTo(.45+Math.cos(a+.3)*.15,.55+Math.sin(a+.3)*.13);g2.closePath();g2.fill();}
     g2.fillStyle='#fff4e3';g2.beginPath();g2.ellipse(.45,.55,.15,.13,0,0,7);g2.fill();
     g2.fillStyle=INK;g2.beginPath();g2.arc(.4,.55,.022,0,7);g2.arc(.5,.55,.022,0,7);g2.fill();g2.fillStyle='#d9d3cc';g2.beginPath();g2.arc(.15,1.0,.04,0,7);g2.fill();});
-  /* HedgeKura Japanese decor: sakura noren curtains + paper lanterns on the back wall (decor only, no gameplay change) */
+  /* hedgekura Japanese decor: sakura noren curtains + paper lanterns on the back wall (decor only, no gameplay change) */
   for(const [x0,x1] of [[1.5,3.5],[7.5,9.5],[13.5,15.5]]){
     poly(D,[P(x0,0,H-.05),P(x1,0,H-.05),P(x1,0,H-.85),P(x0,0,H-.85)],'#f9c5d1',INK,D.OL*.6);
     for(const [u,v] of [[.3,.2],[1.0,.45],[1.7,.25]]) ell(D,...P(x0+u,0,H-.05-v),T*.07,T*.05,'#f48fb1',null);
     line(D,[P((x0+x1)/2,0,H-.05),P((x0+x1)/2,0,H-.85)],'#e88aa0',D.OL*.5); }
   for(const x of [5.5,11.5,17.0]){ const [sx,sy]=P(x,0,H+.05); ell(D,sx,sy,T*.14,T*.18,'#ffe9ee',INK,D.OL*.6); ell(D,sx,sy,T*.07,T*.09,'#f9c5d1',null); }
-  /* HedgeKura v2 overview poster on the back wall (real v2 art, not just a colour restyle) */
+  /* hedgekura v2 overview poster on the back wall (real v2 art, not just a colour restyle) */
   if(typeof V2_IMG!=='undefined'&&V2_IMG.overview) onFace(D,'y',16.1,0,H-.05,g2=>{ g2.fillStyle='#5a3424'; g2.fillRect(-.06,-.06,2.12,1.42); g2.drawImage(V2_IMG.overview,0,0,2.0,1.3); });
   /* wooden caps */
   poly(D,[P(-t,-t,H),P(lenX,-t,H),P(lenX,0,H),P(0,0,H),P(0,lenY,H),P(-t,lenY,H)],ENVC.capTop,INK,D.OL*.8);

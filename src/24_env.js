@@ -1,5 +1,5 @@
 /* =====================================================================
-   24_env.js — HedgeKura environment sprites (approved P1 / kit art, see tools/build_env.py)
+   24_env.js — hedgekura environment sprites (approved P1 / kit art, see tools/build_env.py)
    Every sprite is drawn by a world anchor point + its own anchor inside the image (fractions),
    sized by its width in tile units (1 TW = one character height, the P1 proportions).
    ===================================================================== */

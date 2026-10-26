@@ -1,8 +1,8 @@
-# HedgeKura
+# hedgekura
 
-> HedgeKura — a hedgehog restaurant tycoon for TikTok Minis. All characters are the HedgeKura hedgehog set (player is the female hedgehog in the green cap), and all visible branding is HedgeKura.
+> hedgekura — a hedgehog restaurant tycoon for TikTok Minis. All characters are the hedgekura hedgehog set (player is the female hedgehog in the green cap), and all visible branding is hedgekura.
 
-Idle tycoon mini game for **TikTok Minis** (native canvas build). It reuses the tycoon engine with HedgeKura data and art.
+Idle tycoon mini game for **TikTok Minis** (native canvas build). It reuses the tycoon engine with hedgekura data and art.
 
 - Current version: **v1.6.4** (`VERSION` in `src/00_config.js`)
 - TikTok App ID / HS Game ID: `7699569778830231573`

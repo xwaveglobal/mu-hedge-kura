@@ -93,7 +93,7 @@ async function boot(){
     rebuildWorld(false); refreshSolids(); buildFloorCache(TW);
     if(S.stage===0&&S.bought.oven1) stations.forEach(s=>{if(s.type==='oven')s.stock=2});
     camX=(player.x-player.y)*TW/2;camY=(player.x+player.y)*TW/4;
-    UI.loading(1,'Ready! HedgeKura!'); await new Promise(r=>setTimeout(r,350));
+    UI.loading(1,'Ready! hedgekura!'); await new Promise(r=>setTimeout(r,350));
     $('loading').classList.add('gone'); setTimeout(()=>{$('loading').hidden=true},400);
     window.__cpStarted=true; last=null; requestAnimationFrame(frame);
     PF.initLifecycle(); UI.afterBoot&&UI.afterBoot();
