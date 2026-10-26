@@ -158,11 +158,11 @@ const UI={
         if(badge){ const bx=L-2+w-4, by=sideY+3+Math.sin(t*4)*1.5; ctx.beginPath(); ctx.arc(bx,by,11,0,7); ctx.fillStyle='#fff'; ctx.fill(); ctx.beginPath(); ctx.arc(bx,by,9,0,7); ctx.fillStyle=C.red; ctx.fill(); ctx.lineWidth=1.5; ctx.strokeStyle=C.ink; ctx.stroke(); txt('!',bx,by+1,14,'#fff','center'); }
         hit(L-2,sideY,w,h,fn,k); sideY+=h+6; } }
     /* bottom: dock + task card */
-    const dockW=Math.min(W-20,5*82+4*6), bw=Math.min(W>=700?82:76,(dockW-24)/5), bh=bw*1.02, dockY=H-I.bottom-8-bh, gap=(dockW-5*bw)/4, dx0=(W-dockW)/2;
+    const dockW=Math.min(W-20,5*82+4*6), bw=Math.min(W>=700?82:76,(dockW-24)/5), bh=bw*1.02, dockY=H-4-bh, gap=(dockW-5*bw)/4, dx0=(W-dockW)/2; /* dock pinned to physical bottom, safe-area bottom ignored per user request */
     const dock=[['Shop','shop',['#ffc061','#f08d3c'],()=>UI.openShop()],['Upgrade','upgrade',['#8fd86a','#4fa63f'],()=>UI.openUpgrade()],['Task','task',['#f07a5c','#c9452f'],()=>UI.openTasks()],['Map','map',['#7cc8f5','#3f93d6'],()=>UI.openMap()],['Settings','gear',['#8a6a58','#5e4334'],()=>UI.openSettings()]];
     dock.forEach(([lab,ic,fill,fn],i)=>{ const x=dx0+i*(bw+gap), dy=pressed('d'+lab)?2:0; box(x,dockY+dy,bw,bh,14,fill,C.ink,2.5,dy?1:3); drawImg(icon(ic),x+bw*.19,dockY+dy+bh*.1,bw*.62,bw*.62); txt(lab,x+bw/2,dockY+dy+bh*.84,12,'#fff','center',700,C.ink,3); hit(x,dockY,bw,bh,fn,'d'+lab); });
-    UI.drawTaskCard(L,dockY-8,Math.min(360,W-20-74));
-    if(CFG.autoPlay){ const r=31, cx=W-10-r, cy=dockY-8-r, on=!!S.auto, dy=pressed('auto')?2:0, pul=on?1+Math.sin(t*4.5)*.04:1;
+    UI.drawTaskCard(L,dockY-6,Math.min(360,W-20-74));
+    if(CFG.autoPlay){ const r=31, cx=W-10-r, cy=dockY-6-r, on=!!S.auto, dy=pressed('auto')?2:0, pul=on?1+Math.sin(t*4.5)*.04:1;
       ctx.save(); ctx.translate(cx,cy+dy); ctx.scale(pul,pul); ctx.beginPath(); ctx.arc(0,3,r,0,7); ctx.fillStyle='rgba(90,52,36,.35)'; ctx.fill();
       ctx.beginPath(); ctx.arc(0,0,r,0,7); ctx.fillStyle=on?'#7ed957':'#d9cbb8'; ctx.fill(); ctx.lineWidth=3; ctx.strokeStyle=C.ink; ctx.stroke();
       txt('AUTO',0,-4,15,C.ink,'center',700); txt(S.auto===2?'×2':on?'ON':'OFF',0,12,11,C.ink,'center',600); ctx.restore();

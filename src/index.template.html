@@ -16,7 +16,7 @@ html,body{height:100%;margin:0;overflow:hidden;background:var(--grass);color:var
 button{font:inherit;color:inherit}
 [hidden]{display:none!important}
 #wrap{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--capw:0px;--capb:0px}
-.hud{position:absolute;inset:0;pointer-events:none;padding:calc(8px + var(--sat)) max(10px,env(safe-area-inset-right,0px)) calc(8px + var(--sab)) max(10px,env(safe-area-inset-left,0px));display:flex;flex-direction:column}
+.hud{position:absolute;inset:0;pointer-events:none;padding:calc(8px + var(--sat)) max(10px,env(safe-area-inset-right,0px)) calc(2px + var(--sab)) max(10px,env(safe-area-inset-left,0px));display:flex;flex-direction:column}
 .has-cap .top{padding-right:var(--capw)}
 .top{display:flex;gap:6px;align-items:center}
 .pill{pointer-events:auto;display:flex;align-items:center;gap:4px;height:34px;padding:0 8px 0 4px;background:var(--cream);border:2.5px solid var(--ink);border-radius:18px;box-shadow:0 3px 0 rgba(90,52,36,.3);font-weight:700;font-size:17px;font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -103,7 +103,7 @@ button:focus-visible,.boost:focus-visible{outline:3px solid #fff;outline-offset:
 #errorBox{position:absolute;inset:0;z-index:20;display:grid;place-items:center;padding:20px;background:#fff4e3}
 #errorBox div{max-width:340px;text-align:center;border:3px solid var(--ink);border-radius:16px;padding:16px;background:#fff}#errorBox h2{margin:0 0 6px;color:var(--red)}#errorBox p{font-family:ui-monospace,Menlo,monospace;font-size:12px;word-break:break-word}
 /* v4.4 side gift buttons (left edge, below the status pills) */
-#autoBtn{pointer-events:auto;position:absolute;right:max(10px,env(safe-area-inset-right,0px));bottom:calc(var(--sab,0px) + 92px);width:62px;height:62px;border-radius:50%;border:3px solid var(--ink);background:#d9cbb8;color:var(--ink);font:700 15px/1 Fredoka,system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:0 3px 0 rgba(90,52,36,.35);cursor:pointer}
+#autoBtn{pointer-events:auto;position:absolute;right:max(10px,env(safe-area-inset-right,0px));bottom:calc(var(--sab,0px) + 86px);width:62px;height:62px;border-radius:50%;border:3px solid var(--ink);background:#d9cbb8;color:var(--ink);font:700 15px/1 Fredoka,system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:0 3px 0 rgba(90,52,36,.35);cursor:pointer}
 #autoBtn small{font-size:11px;opacity:.8}
 #autoBtn.on{background:#7ed957;animation:autoPulse 1.4s infinite}#autoBtn.x2{background:#ffb84d;animation-duration:.7s}@keyframes autoPulse{50%{transform:scale(1.06)}}
 #autoBtn:focus-visible{outline:3px solid #fff}
