@@ -48,7 +48,7 @@ function sfx(k){ if(!AC||!S||!S.sound||paused||sfxFail>=3||(AC.state&&AC.state!=
 
 /* ---------- save / load ---------- */
 function freshState(){return{v:3,v4:true,side:0,sideBase:null,money:CFG.startMoney,task:0,taskBase:null,bought:{},stage:0,spd:0,cap:0,store:0,sup:0,mSpd:0,mCarry:0,rPrice:0,rFlow:0,
-  level:1,xp:0,pile:0,boostUntil:0,boostCd:0,grand:false,done:false,playTime:0,sound:true,mx:{},
+  level:1,xp:0,pile:0,boostUntil:0,boostCd:0,grand:false,done:false,playTime:0,sound:true,auto:0,autoSpeed:1,mx:{},
   stats:{served:0,collected:0,dumped:0,loaded:0,vip:0,decor:0,lost:0,cooked_pizza:0,cooked_drink:0,cooked_pepperoni:0,cooked_dessert:0,cooked_special:0,cooked_veggie:0,cooked_seafood:0,cookedAll:0,streak:0}}}
 function migrateV1(o){ // v2 save (Halloween build) -> v3: keep money, purchases, upgrades, progress
   const s=freshState(); s.money=o.money??s.money; s.level=o.level||1; s.xp=o.xp||0; s.pile=o.pile||0;
@@ -78,7 +78,7 @@ let last=0,saveT=0;
    performance.now (TikTok native: no global performance) — a negative dt once sent the clock back 56 years */
 function frame(ts){try{ if(typeof ts!=='number'||!isFinite(ts)) ts=performance.now(); if(last===null||ts<last) last=ts;
     let dt=(ts-last)/1000; if(!(dt>0)) dt=0; dt=Math.min(.05,dt); last=ts;
-    if(!UI.modalOpen&&!paused){ const inp=getInput(); update(dt,inp); if(CFG.autoPlay&&S.auto===2&&AUTOP.manualT<=0) update(dt,inp); }
+    if(!UI.modalOpen&&!paused){ const inp=getInput(); update(dt,inp); if(CFG.autoPlay&&S.auto&&AUTOP.manualT<=0){ const sp=S.autoSpeed||1; let rem=sp-1; while(rem>=1){ update(dt,inp); rem-=1; } if(rem>0) update(dt*rem,inp); } }
     render();UI.frame();saveT+=dt;if(saveT>2){saveT=0;save()}
   }catch(err){console.error(err);window.__cpFrameErrN=(window.__cpFrameErrN||0)+1;if(!window.__cpFrameErr){window.__cpFrameErr=true;UI.toast('Error: '+err.message)}}
   requestAnimationFrame(frame)}

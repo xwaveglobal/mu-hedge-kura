@@ -35,8 +35,8 @@ const CFG={
   },
   /* Engagement gifts — fixed amount per claim */
   gifts:{revisit:100, share:50, home:100, showAfter:'t_upgrade'},
-  /* Auto play (AUTO button). Off in this build: button hidden, saved S.auto ignored */
-  autoPlay:false,
+  /* Autoplay branch: ON. Autoplay is in Settings (native) — tick a speed to fast-forward. */
+  autoPlay:true,
 };
 const round10=n=>Math.max(10,Math.round(n/10)*10);
 

@@ -7,8 +7,8 @@ const UI={
   init(){
     $('icCoin').innerHTML=UI_ICON.coin;$('taskReward').querySelector('i').innerHTML=UI_ICON.coin;$('icStar').innerHTML=UI_ICON.star;$('icPin').innerHTML=UI_ICON.pin;
     for(const [id,ic] of [['bShop','shop'],['bUpg','upgrade'],['bTask','task'],['bMap','map'],['bSet','gear']]) $(id).querySelector('i').innerHTML=UI_ICON[ic];
-    UI.syncAuto=()=>{const b=$('autoBtn');if(!b)return;b.classList.toggle('on',!!S.auto);b.classList.toggle('x2',S.auto===2);b.setAttribute('aria-pressed',String(!!S.auto));b.querySelector('small').textContent=S.auto===2?'×2':S.auto?'ON':'OFF'};
-    if(!CFG.autoPlay){S.auto=0;$('autoBtn').hidden=true;$('autoBtn').style.display='none';} $('autoBtn').onclick=()=>{S.auto=S.auto===2?0:S.auto?2:1;AUTOP.manualT=0;AUTOP.cur=null;save();UI.syncAuto();UI.toast(S.auto===2?'Auto play ×2 speed':S.auto?'Auto play ON — drag to take over':'Auto play OFF')};UI.syncAuto();
+    UI.syncAuto=()=>{const b=$('autoBtn');if(!b)return;b.classList.toggle('on',!!S.auto);b.classList.toggle('x2',(S.autoSpeed||1)>1);b.setAttribute('aria-pressed',String(!!S.auto));b.querySelector('small').textContent=S.auto?('×'+(S.autoSpeed||1)):'OFF'};
+    if(!CFG.autoPlay){S.auto=0;$('autoBtn').hidden=true;$('autoBtn').style.display='none';} $('autoBtn').onclick=()=>{S.auto=S.auto?0:1;if(S.auto&&!S.autoSpeed)S.autoSpeed=1;AUTOP.manualT=0;AUTOP.cur=null;save();UI.syncAuto();UI.toast(S.auto?('Auto play ON ×'+(S.autoSpeed||1)+' — drag to take over'):'Auto play OFF')};UI.syncAuto();
     $('bShop').onclick=()=>UI.openShop(); $('bUpg').onclick=()=>UI.openUpgrade(); $('bTask').onclick=()=>UI.openTasks(); $('bMap').onclick=()=>UI.openMap(); $('bSet').onclick=()=>UI.openSettings();
     $('progPill').onclick=()=>UI.openMap(); $('plusBtn').onclick=()=>UI.openShop(); $('taskCard').onclick=()=>UI.openTasks();
     $('boostBtn').onclick=()=>UI.startAd();
