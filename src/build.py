@@ -1,4 +1,4 @@
-"""Build HedgeKura
+"""Build hedgekura
    dist/artifact.html         – page body for the Claude artifact (test build)
    dist/index.html            – standalone page (same code)
    dist/minis/index.html      – TikTok Minis HTML build: ES2017-transpiled, no remote fonts required, icon files next to it
