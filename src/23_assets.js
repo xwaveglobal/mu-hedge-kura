@@ -44,7 +44,7 @@ async function preloadAssets(onProgress){
   for(const e of ASSET_MANIFEST){
     try{ ATLAS[e.key]=bakeEntry(e); ASSET_REPORT.baked++; }
     catch(err){ ASSET_REPORT.errors.push(e.key+': '+err.message); }
-    if(++i%6===0){onProgress&&onProgress(i/N*.9);await new Promise(r=>setTimeout(r,0));}
+    if(++i%2===0){onProgress&&onProgress(i/N*.9);await new Promise(r=>setTimeout(r,0));}
   }
   if(window.HEDGEKURA_USE_FILES) for(const e of ASSET_MANIFEST) if(!ASSET_OVERRIDES[e.key]&&e.type!=='rig'&&e.type!=='staff') ASSET_OVERRIDES[e.key]=e.file;
   for(const key in ASSET_OVERRIDES){
@@ -71,7 +71,7 @@ async function preloadAssets(onProgress){
   for(const k in ENV_ART) jobs.push(async()=>{ try{ const im=await loadImage(ENV_ART[k].src); ENV[k]={img:im,w:ENV_ART[k].w,h:ENV_ART[k].h,tip:ENV_ART[k].tip||.5}; ASSET_REPORT.loaded++; } catch(err){ ASSET_REPORT.missing.push('env_'+k); } });
   if(typeof V2_STATION_SRC!=='undefined') for(const k in V2_STATION_SRC) jobs.push(async()=>{ try{ V2_IMG[k]=await loadImage(V2_STATION_SRC[k]); ASSET_REPORT.loaded++; } catch(err){ ASSET_REPORT.missing.push('v2_'+k); } });
   let done=0; const total=jobs.length||1, q=jobs.slice();
-  const worker=async()=>{ while(q.length){ await q.shift()(); done++; if(done%4===0) onProgress&&onProgress(.9+.1*done/total); } };
+  const worker=async()=>{ while(q.length){ await q.shift()(); done++; if(done%2===0) onProgress&&onProgress(.9+.1*done/total); } };
   await Promise.all(Array.from({length:6},worker));
   const required=ASSET_MANIFEST.filter(e=>!ATLAS[e.key]).map(e=>e.key);
   if(required.length) throw new Error('Assets failed to build: '+required.join(', '));

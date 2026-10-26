@@ -51,7 +51,7 @@ function button(x,y,w,h,label,fn,o={}){ const id=o.id||label+x+','+y, on=!o.disa
 const UI={
   modalOpen:false,_last:{},hintHidden:false,hintA:1,_toast:null,_banner:null,_bumpT:0,_popT:0,_done:null,_modal:null,_scroll:0,_scrollMax:0,
   _offer:null,_cd:{},_padSince:0,_rvCan:false,_ins:{top:0,bottom:0,capW:0,capB:0},_lp:0,_loadTxt:'',_mock:null,_sheet:null,
-  init(){ UI.applyInsets(); ['coin','star','pin','shop','upgrade','task','map','gear','speed','capacity','storage','supplier','run','carry','price','flow','lock','check','ad','share'].forEach(k=>icon(k)); for(let i=0;i<4;i++) img('img/stage_'+i+'.png');
+  init(){ UI.applyInsets(); ['coin','star','pin','shop','upgrade','task','map','gear','speed','capacity','storage','supplier','run','carry','price','flow','lock','check','ad','share'].forEach(k=>icon(k)); for(let i=0;i<4;i++) img('img/stage_'+i+'.png'); img('img/loading_bg.jpg'); img('img/paw_thumb.png');
  },
   applyInsets(){ const r=PF.insets(); UI._ins=r; },
   /* --- simple feedback --- */
