@@ -2,7 +2,7 @@
    00_config.js — every tunable number lives here (data-driven design)
    ===================================================================== */
 const VERSION='1.6.4';
-const SAVE_KEY='meowburger.v3', LEGACY_SAVE_KEY='meowburger.v0'; /* v4 keeps the v3 save format */
+const SAVE_KEY='hedgekura.v3', LEGACY_SAVE_KEY='hedgekura.v0'; /* HedgeKura save format */
 const REF=144;          // sprite resolution: px per tile width for object sprites
 const REF_C=128;        // sprite resolution for character sheets
 
@@ -22,7 +22,7 @@ const CFG={
   decorBonus:0.05,          // +5% to every sale per decoration bought
   stageNames:['Chicken Corner','HedgeKura Diner','Bigger Restaurant','Patio & Grand Opening'],
   minis:{clientKey:''},
-  /* Ad scenario v4.6 — Meow Pizza placements (labels match the Meow Sushi config). Times in seconds.
+  /* Ad scenario v4.6 — HedgeKura placements (labels match the HedgeKura config). Times in seconds.
      Ads are shown through Ads.adapter (HS SDK goes there); without it a test ad is simulated. */
   ads:{
     doubleTask:{min:20, max:150, show:10, cd:45},  // x2 Task Bonus: after a task pays coins -> the same reward again (max 150)
@@ -82,7 +82,7 @@ const UPG={
     {key:'rFlow', label:'CUSTOMERS',icon:'flow', max:5,cost:[100,180,300,460,700], desc:'Customers arrive faster'}]},
 };
 
-/* Map zones (HedgeKura v1.2, ex-Meow Burger). Back walls run along y=0 and x=0.
+/* Map zones (HedgeKura). Back walls run along y=0 and x=0.
    kitchen = one block behind the PICK UP counter (left), hall = queue + dining right next to the queue,
    expansion: kitchen annex below the kitchen, dining hall below the hall, patio below that. Customers enter from the right. */
 const ZONES=[

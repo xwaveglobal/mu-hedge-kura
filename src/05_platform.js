@@ -101,7 +101,7 @@ const dayKey=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart
 
 /* =====================================================================
    Ads — one manager for every placement. Placement keys used in code -> label
-   (labels match the Meow Sushi ads config):
+   (labels match the HedgeKura ads config):
    ===================================================================== */
 const AD_PLACEMENTS={
   double_task:  {label:'Double Task Bonus', type:'rewarded'},   // x2 bonus when a task is completed

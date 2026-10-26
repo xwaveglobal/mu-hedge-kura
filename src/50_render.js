@@ -56,16 +56,16 @@ function drawStaff(e,name,anim){
   return [sx,sy];}
 /* ---- customers / VIP / cleaner / manager: approved art (8-direction idle; drawn walk cycles where the sheet has them,
         otherwise the body stays still and only the leg strip steps) ---- */
-const SHEET_H={chef:1.06,cashier:1.0,waiter:1.0,cleaner:1.0,cat01:.95,cat02:.95,cat03:.95,cat04:.95,vip01:1.0,vip02:1.0,manager:1.0};
+const SHEET_H={chef:1.06,cashier:1.0,waiter:1.0,cleaner:1.0,cust01:.95,cust02:.95,cust03:.95,cust04:.95,vip01:1.0,vip02:1.0,manager:1.0};
 /* HedgeKura sheets: the player has a full 8-direction walk + tray-carry set; the other roles have one drawn walk
    (screen-right, mirrored for screen-left) and step their legs on the 8-direction idle art for the other directions.
    A few side-profile idles lost face fill when cut, so those directions reuse the clean neighbour view. */
 const SIDE_WALK={walk:{90:[270,1]}};
 const SHEET_REMAP={
   chef:{walk:{0:'legs',180:'legs'}},
-  cashier:SIDE_WALK, waiter:SIDE_WALK, cleaner:SIDE_WALK, cat01:SIDE_WALK, cat03:SIDE_WALK, vip02:SIDE_WALK,
-  cat02:{idle:{90:[45,0],270:[315,0]},walk:{90:[270,1]}},
-  cat04:{idle:{135:[225,1]},walk:{90:[270,1]}},
+  cashier:SIDE_WALK, waiter:SIDE_WALK, cleaner:SIDE_WALK, cust01:SIDE_WALK, cust03:SIDE_WALK, vip02:SIDE_WALK,
+  cust02:{idle:{90:[45,0],270:[315,0]},walk:{90:[270,1]}},
+  cust04:{idle:{135:[225,1]},walk:{90:[270,1]}},
   vip01:{idle:{90:[270,1]},walk:{90:[270,1]}},
   manager:{idle:{90:[270,1]},walk:{90:[270,1]}},
 };

@@ -4,8 +4,8 @@
    (or HS_DEFAULTS below when offline) decides what they give; every reward
    arrives in hsGive (onGive). Ads are shown by placement label.
    ===================================================================== */
-/* HedgeKura credentials live in meow-config.js next to game.js (fill in before uploading) */
-const HS_CFG=(function(){ try{ const c=(typeof require==='function')?require('./meow-config.js'):{}; return {gameId:String(c.appId||''),sdkKey:String(c.hsSdkKey||'')}; }catch(e){ return {gameId:'',sdkKey:''}; } })();
+/* HedgeKura credentials live in hedgekura-config.js next to game.js (fill in before uploading) */
+const HS_CFG=(function(){ try{ const c=(typeof require==='function')?require('./hedgekura-config.js'):{}; return {gameId:String(c.appId||''),sdkKey:String(c.hsSdkKey||'')}; }catch(e){ return {gameId:'',sdkKey:''}; } })();
 /* Same as the iaa_config "rewards" / "items" in HedgeKura.hs-dashboard.json */
 const HS_DEFAULTS={
   rewards:{
@@ -32,7 +32,7 @@ const HSB={
   ok(){ return !!(HSGame&&HSGame.ready); },
   label(from){ return ({'Coin Purchase':'Coin purchase','Grand Opening':'Grand opening',share:'Share gift',tiktok_profile:'Revisit gift',tiktok_shortcut:'Home screen bonus'})[from]||'Reward'; },
   /* always start when the kit loaded: with placeholder credentials login simply fails -> ads/cloud off, game still plays */
-  start(){ if(!HSGame) return; if(!/^sk_/.test(HS_CFG.sdkKey)||/YOUR_/.test(HS_CFG.gameId)) console.warn('[HS] meow-config.js not filled in yet: ads/missions/cloud stay off');
+  start(){ if(!HSGame) return; if(!/^sk_/.test(HS_CFG.sdkKey)||/YOUR_/.test(HS_CFG.gameId)) console.warn('[HS] hedgekura-config.js not filled in yet: ads/missions/cloud stay off');
     HSGame.start({ gameId:HS_CFG.gameId, sdkKey:HS_CFG.sdkKey, defaults:HS_DEFAULTS, onGive:hsGive, onLoad:hsLoad })
       .then(r=>{ console.log('[HS] start',JSON.stringify(r)); HSB.trace(); HSB.cloud(true); })
       .catch(e=>console.warn('[HS] start failed',e&&e.message)); },

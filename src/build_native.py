@@ -86,7 +86,7 @@ for nme in ['btn_revisit.png','btn_share.png','btn_home.png','pop_home_art.jpg',
     shutil.copy(os.path.join(ART,nme),os.path.join(OUT,'art','ui',nme))
 open(os.path.join(OUT,'art','game.js'),'w').write('// HedgeKura art subpackage: sprite images only (loaded with loadSubpackage("art")).\n')
 for k in ['hs-game.js','hs-tiktok-sdk.min.js']: shutil.copy(os.path.join(HSKIT,k),os.path.join(OUT,k))
-open(os.path.join(OUT,'meow-config.js'),'w').write('''// HedgeKura — fill in before uploading to TikTok Minis.
+open(os.path.join(OUT,'hedgekura-config.js'),'w').write('''// HedgeKura — fill in before uploading to TikTok Minis.
 // appId: your TikTok Minis App ID (same value as "appid" in project.config.json)
 // hsSdkKey: your HS SDK key (sk_live_...). The Client Secret never goes here.
 module.exports = {

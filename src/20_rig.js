@@ -23,7 +23,7 @@ const RIG={bodyY:.27,bodyRX:.27,bodyRXside:.24,bodyRY:.205,headY:.655,headRX:.38
 const SOFT_INK='#6a2c1f';
 
 const HEDGE_SKINS={
-  chef:    {name:'Chef Hedgehog (player)',fur:'#f6a24e',white:'#fffaf2',quill:'#8a5a2c',pattern:'bicolor',shirt:'#ffffff',apron:'#ec4a4a',apronLogo:'#ffffff',pants:'#5a3a2c',hat:'toque'},
+  chef:    {name:'Player Hedgehog (female, green cap, pink bow)',fur:'#e8a05c',white:'#fffaf2',quill:'#8a5a2c',pattern:'bicolor',shirt:'#ffffff',apron:'#2e7d5b',apronLogo:'#ffffff',pants:'#5a3a2c',hat:'cap',hatColor:'#2e7d5b',bow:'#f7a8b8'},
   waiter:  {name:'Waiter Hedgehog',fur:'#a9a4ab',white:'#fffaf6',quill:'#8a5a2c',pattern:'bicolor',shirt:'#ffffff',apron:'#ec4a4a',apronLogo:'#ffffff',pants:'#4a3a3a',hat:'cap',hatColor:'#ec4a4a'},
   cashier: {name:'Cashier Hedgehog',fur:'#fffaf4',white:'#ffffff',quill:'#8a5a2c',pattern:'calico',p1:'#f4a456',p2:'#76696c',shirt:'#ffffff',apron:'#f5609a',apronLogo:'#ffffff',pants:'#4a3a3a',hat:'bow',hatColor:'#f5609a'},
   helper:  {name:'Kitchen Helper',fur:'#efd9b6',white:'#fffaf2',quill:'#8a5a2c',pattern:'bicolor',shirt:'#ffffff',apron:'#ec4a4a',apronLogo:'#ffffff',pants:'#5a3a2c',hat:'toque'},
@@ -38,7 +38,7 @@ const HEDGE_SKINS={
   tourist: {name:'Customer (tourist)',fur:'#f1dcc0',white:'#fffaf2',quill:'#8a5a2c',pattern:'bicolor',shirt:'#3fb6c6',polo:true,pants:'#c9a36a',hat:'bucket',hatColor:'#4aa3e8',camera:true,backpack:'#e2a466'},
   vip:     {name:'Customer (VIP)',fur:'#f6a24e',white:'#fff4e2',quill:'#8a5a2c',pattern:'bicolor',shirt:'#2f2a33',collar:'#ffffff',tie:'#ec4a4a',pants:'#2a252e',hat:'fedora',hatColor:'#2a252e',shades:true},
 };
-const CUSTOMER_SKINS=['cat01','cat02','cat03','cat04'];   // approved art sets (16_more_sprites.js)
+const CUSTOMER_SKINS=['cust01','cust02','cust03','cust04'];   // approved art sets (16_more_sprites.js)
 const VIP_SKINS=['vip01','vip02'];   // the two VIP looks with full sheets (fedora, pink elegant)
 
 /* ---------- pose: only what each animation is allowed to move ---------- */

@@ -1,8 +1,8 @@
 # HedgeKura
 
-> HedgeKura build made from Meow Burger v1.6.4 in a local copy only. Gameplay, save format and internal keys are unchanged; only player-visible branding, characters and decor were swapped (see HEDGEKURA_AUDIT.md).
+> HedgeKura — a hedgehog restaurant tycoon for TikTok Minis. All characters are the HedgeKura hedgehog set (player is the female hedgehog in the green cap), and all visible branding is HedgeKura.
 
-Idle tycoon mini game for **TikTok Minis** (native canvas build). It reuses the Meow Pizza v4.8 engine with HedgeKura data and art.
+Idle tycoon mini game for **TikTok Minis** (native canvas build). It reuses the tycoon engine with HedgeKura data and art.
 
 - Current version: **v1.6.4** (`VERSION` in `src/00_config.js`)
 - TikTok App ID / HS Game ID: `7699569778830231573`
@@ -27,7 +27,7 @@ Idle tycoon mini game for **TikTok Minis** (native canvas build). It reuses the 
 - `assets/`: UI and loading art, icons. `vendor/`: HS SDK kit (do not edit).
 - `tools/`: art pipeline (`matte.py`, `build_chars.py`, `build_env.py`, `build_kit_art.py`…). These read source sheets from absolute paths; see the `art-source` branch.
 - `tests/`: `bot.js` (full playthrough), `qa_native.js` (fake TikTok runtime), `qa_minis.js` (web), and others.
-- `docs/`: the standard tycoon ad scenario, build notes, and legacy Meow Pizza notes.
+- `docs/`: the standard tycoon ad scenario and build notes.
 
 ## Build
 
@@ -37,7 +37,7 @@ cp src/native/hs-config.example.json src/native/hs-config.json   # fill in gameI
 python3 src/build_native.py     # TikTok native: dist/native + dist/native.hs-dashboard.json
 ```
 
-`src/native/hs-config.json` is gitignored. The build writes its values into `project.config.json` (appid), `meow-config.js` (appId + HS SDK key) and the dashboard JSON (ad unit IDs). Without it the package is built with placeholders; the game still plays, but ads, missions and cloud save stay off. The TikTok **Client Secret** never goes in this repo.
+`src/native/hs-config.json` is gitignored. The build writes its values into `project.config.json` (appid), `hedgekura-config.js` (appId + HS SDK key) and the dashboard JSON (ad unit IDs). Without it the package is built with placeholders; the game still plays, but ads, missions and cloud save stay off. The TikTok **Client Secret** never goes in this repo.
 
 ## Test
 

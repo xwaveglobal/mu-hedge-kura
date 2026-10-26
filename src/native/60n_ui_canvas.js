@@ -145,7 +145,7 @@ const UI={
     const show=S.task>=taskIndex('t_serve5');
     if(show){ const bx=W-10-78, by=Math.max(T+48,I.capB+8), on=isBoost(), sub=on?Math.ceil(S.boostUntil-now)+'s left':now<S.boostCd?'ready in '+Math.ceil(S.boostCd-now)+'s':'for 1 min';
       const dy=pressed('rush')?2:0; box(bx,by+dy,78,66,12,C.cream,C.ink,2.5,dy?1:3); ctx.save(); rrp(ctx,bx,by+dy,78,66,12); ctx.clip(); ctx.fillStyle=on?C.green:C.blue; ctx.fillRect(bx,by+dy+30,78,40); ctx.restore(); rrp(ctx,bx,by+dy,78,66,12); ctx.lineWidth=2.5; ctx.strokeStyle=C.ink; ctx.stroke();
-      txt('MEOW RUSH',bx+39,by+dy+10,11,C.ink,'center'); txt('×2 SPEED',bx+39,by+dy+23,14,'#3f8f35','center'); txt(sub,bx+39,by+dy+50,11,'#fff','center',700,C.ink,3);
+      txt('HEDGE RUSH',bx+39,by+dy+10,11,C.ink,'center'); txt('×2 SPEED',bx+39,by+dy+23,14,'#3f8f35','center'); txt(sub,bx+39,by+dy+50,11,'#fff','center',700,C.ink,3);
       hit(bx,by,78,66,()=>UI.startAd(),'rush'); }
     /* coin bag (Buying Pad) chip */
     let sideY=T+46;

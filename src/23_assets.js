@@ -21,7 +21,7 @@ function bakeRigPreview(skin){const H=REF_C,fw=Math.round(H*1.0),fh=Math.round(H
 const ASSET_MANIFEST=[];
 (function buildManifest(){
   for(const n in STAFF_SPRITES) for(const p in STAFF_SPRITES[n]) ASSET_MANIFEST.push({key:'staff_'+n+'_'+p,type:'staff',group:'characters',file:`assets/characters/${n}_${p}.png`,desc:'approved art (cut from sheet)'});
-  for(const k in HEDGE_SKINS) ASSET_MANIFEST.push({key:'cat_'+k,type:'rig',group:'characters',file:`assets/characters/cat_${k}_8dir.png`,desc:`${HEDGE_SKINS[k].name} — part rig, 8-direction preview (0..315°)`});
+  for(const k in HEDGE_SKINS) ASSET_MANIFEST.push({key:'hedge_'+k,type:'rig',group:'characters',file:`assets/characters/hedge_${k}_8dir.png`,desc:`${HEDGE_SKINS[k].name} — part rig, 8-direction preview (0..315°)`});
   for(const k in ITEM_PAINT) ASSET_MANIFEST.push({key:'it_'+k,type:'item',group:'items',file:`assets/items/it_${k}.png`,desc:k.startsWith('raw_')?'raw '+((ITEMS[k.slice(4)]||{}).name||k):k.startsWith('ic_')?'order-bubble icon '+((ITEMS[k.slice(3)]||{}).name||k):(ITEMS[k]||{}).name||k});
   for(const k in EMOTE_PAINT) ASSET_MANIFEST.push({key:'em_'+k,type:'emote',group:'ui',file:`assets/ui/em_${k}.png`,desc:'emote '+k});
   for(const k in OBJ_PAINT) ASSET_MANIFEST.push({key:k,type:'iso',group:k.startsWith('gd_')?'outdoor':k.startsWith('st_')?'stations':'restaurant',file:`assets/${k.startsWith('gd_')?'outdoor':k.startsWith('st_')?'stations':'restaurant'}/${k}.png`,desc:k});
