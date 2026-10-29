@@ -17,7 +17,7 @@ window.__hsLog=[]; window.__HS={ ready:false, lastAdError:'', lastShareError:'',
  share(o){ __hsLog.push('share'); return new Promise(r=>setTimeout(()=>{ if(this._c.share){ this.lastShareError='claimed'; return r(null);} this._c.share=1; this._give({coins:50},'share'); r({coins:50}); },50)); },
  tiktokMission:{ supported:()=>true, done:k=>!!__HS._c['tiktok_'+k], refresh:()=>Promise.resolve(),
    start(k){ __hsLog.push('mission:'+k); setTimeout(()=>{ if(!__HS._c['tiktok_'+k]){ __HS._c['tiktok_'+k]=1; __HS._give({coins:100},'tiktok_'+k); } },60); return Promise.resolve('started'); } } };
-window.require=p=>{ if(p==='./hs-game.js') return __HS; if(p==='./meow-config.js') return {appId:'1234567890',hsSdkKey:'sk_test_qa'}; throw new Error('no module '+p); }; const _raf=window.requestAnimationFrame.bind(window); window.requestAnimationFrame=f=>_raf(()=>f());
+window.require=p=>{ if(p==='./hs-game.js') return __HS; if(p==='./hedgekura-config.js') return {appId:'1234567890',hsSdkKey:'sk_test_qa'}; throw new Error('no module '+p); }; const _raf=window.requestAnimationFrame.bind(window); window.requestAnimationFrame=f=>_raf(()=>f());
 const _srcSet=Object.getOwnPropertyDescriptor(HTMLImageElement.prototype,'src').set;const cv=document.getElementById('screen');const L={s:[],m:[],e:[],c:[]};
 window.TTMinis={game:{
  canIUse:()=>true,
@@ -96,8 +96,8 @@ const results=[]; const ok=(n,c,i='')=>results.push((c?'PASS ':'FAIL ')+n+(i?' â
   ok('Share: HSGame.share, onGive +50',m1-m0===50&&await p.evaluate(()=>__hsLog.includes('share')),'+'+(m1-m0));
   // ads (no HS adapter yet -> canvas test ad)
   await p.evaluate(()=>{__NWIN.__cp.S.boostUntil=0;__NWIN.__cp.S.boostCd=0}); await tapId('rush'); await p.waitForTimeout(500); await p.screenshot({path:OUT+'/n15_test_ad.png'});
-  ok('ad pauses the game',await p.evaluate(()=>__NWIN.__cp.paused>0)||await p.evaluate(()=>__hsLog.includes('showAd:Meow Rush')));
-  await p.waitForTimeout(800); ok('Meow Rush: showAd("Meow Rush") â†’ onGive boost',await p.evaluate(()=>__hsLog.includes('showAd:Meow Rush'))&&await p.evaluate(()=>__NWIN.__cp.S.boostUntil>__NWIN.__cp.now));
+  ok('ad pauses the game',await p.evaluate(()=>__NWIN.__cp.paused>0)||await p.evaluate(()=>__hsLog.includes('showAd:Hedge Rush')));
+  await p.waitForTimeout(800); ok('Hedge Rush: showAd("Hedge Rush") â†’ onGive boost',await p.evaluate(()=>__hsLog.includes('showAd:Hedge Rush'))&&await p.evaluate(()=>__NWIN.__cp.S.boostUntil>__NWIN.__cp.now));
   await p.evaluate(()=>__NWIN.__cp.UI.offerTip(60)); await p.waitForTimeout(300); await p.screenshot({path:OUT+'/n16_offer_chip.png'});
   m0=await p.evaluate(()=>__NWIN.__cp.S.money); await tapId('offer'); await p.waitForTimeout(3200); m1=await p.evaluate(()=>__NWIN.__cp.S.money);
   ok('x2 task bonus via chip',m1-m0===60,'+'+(m1-m0));
@@ -121,7 +121,7 @@ const results=[]; const ok=(n,c,i='')=>results.push((c?'PASS ':'FAIL ')+n+(i?' â
       const i=A.TASKS.findIndex(t=>t.kind==='buy'&&!S.bought[t.spot]&&A.SPOTS.find(s=>s.id===t.spot&&s.cost>=150)); S.task=i; S.money=40; U._cd={};
       const pa=U.padAmount(); if(!pa) return {none:A.TASKS[i].id}; const m=S.money; U.watchPad(); await w(700); return {pad:pa.amount,got:S.money-m}; });
     ok('Buying Pad: showAd("Buying Pad") pays the shortfall',r.got===r.pad&&r.pad>0&&await p.evaluate(()=>__hsLog.includes('showAd:Buying Pad')),JSON.stringify(r)); }
-  ok('every label used',await p.evaluate(()=>['Double Task Bonus','Buying Pad','Meow Rush','VIP tip','Coin Purchase','Grand Opening','Grill Break'].every(l=>__hsLog.includes('showAd:'+l))));
+  ok('every label used',await p.evaluate(()=>['Double Task Bonus','Buying Pad','Hedge Rush','VIP tip','Coin Purchase','Grand Opening','Grill Break'].every(l=>__hsLog.includes('showAd:'+l))));
   ok('HSGame.start with game id',await p.evaluate(()=>__hsLog.includes('start 1234567890')));
   ok('partial WebAudio (no setValueAtTime) does not break the game',await p.evaluate(()=>(window.__acUsed||0)>0&&!__NWIN.__cpFrameErrN),'oscillators: '+await p.evaluate(()=>window.__acUsed||0));
   await p.evaluate(()=>{window.__onHide&&__onHide()}); await p.waitForTimeout(300); await p.evaluate(()=>{window.__onShow&&__onShow({})}); await p.waitForTimeout(800);
@@ -133,7 +133,7 @@ const results=[]; const ok=(n,c,i='')=>results.push((c?'PASS ':'FAIL ')+n+(i?' â
   ok('Ã—2 task bonus from a real task completion shows a number',await p.evaluate(()=>{const A=__NWIN.__cp; A.UI._cd={}; A.UI._offer=null; const t=A.curTask(); if(t.kind==='buy') A.S.bought[t.spot]=true; else if(t.kind==='count') A.S.stats[t.stat]=(A.S.stats[t.stat]||0)+t.n; for(let i=0;i<5;i++) A.update(.05); const o=A.UI._offer; return !!o&&/\+\d+$/.test(o.text)&&!/NaN/.test(o.text)}),await p.evaluate(()=>__NWIN.__cp.UI._offer&&__NWIN.__cp.UI._offer.text));
   ok('Add to Phone Screen button stays visible after the bonus was claimed',await p.evaluate(()=>__NWIN.__cp.UI.homeDone()&&__NWIN.__cp.UI.hits().some(h=>h.id==='btn_home')));
   ok('money is a number',await p.evaluate(()=>Number.isFinite(__NWIN.__cp.S.money)));
-  ok('save via setStorageSync',await p.evaluate(()=>!!__store['meowburger.v3']));
+  ok('save via setStorageSync',await p.evaluate(()=>!!__store['hedgekura.v3']));
   ok('no page errors',errs.length===0,errs.slice(0,4).join(' | '));
   { const p2=await b.newPage({viewport:{width:390,height:844},deviceScaleFactor:2}); await p2.addInitScript(()=>{window.__noMenu=true});
     await p2.goto('http://localhost:'+port+'/__h'); await p2.waitForFunction(()=>window.__NWIN&&__NWIN.__cpStarted,null,{timeout:60000});
