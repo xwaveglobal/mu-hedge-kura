@@ -1,4 +1,4 @@
-/* 19_v2_art.js — HedgeKura v2 station/scene art (from hedgekura-jp-full-v2.zip).
+/* 19_v2_art.js — hedgekura v2 station/scene art (from hedgekura-jp-full-v2.zip).
    Front-facing v2 illustrations, converted to WebP q82. Loaded into V2_IMG by
    preloadAssets (23_assets.js); drawStation (50_render.js) draws them on the
    station footprint instead of the code painter. Overview/p1scene are used as a
