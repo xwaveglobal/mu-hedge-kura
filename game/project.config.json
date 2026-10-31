@@ -1,0 +1,12 @@
+{
+  "appid": "7699569778830231573",
+  "projectname": "hedgekura",
+  "description": "hedgekura",
+  "compileType": "game",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true
+  }
+}
